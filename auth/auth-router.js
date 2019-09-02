@@ -12,12 +12,13 @@ router.post('/register', async (req, res) => {
     user = await Users.add(user);
 
     res.status(201).json({
-      user,
+      id: user.id,
+      username: user.username,
       token: generateToken(user)
     });
   } catch (err) {
     res.status(500).json({
-      err: err.message
+      err: err.message + 'its fucked'
     });
   }
 });
